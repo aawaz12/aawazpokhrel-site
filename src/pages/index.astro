@@ -1,0 +1,465 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import { site, now } from "../config";
+import { interests, research } from "../data";
+import profile from "../assets/profile.jpg";
+import paperikaLogo from "../assets/paperika-logo.png";
+
+const topResearch = research.slice(0, 2);
+---
+
+<BaseLayout wide>
+  <div class="home">
+    <!-- Left rail: identity card, actions, and interests -->
+    <aside class="profile-rail">
+      <div class="id-card">
+        <div class="avatar-wrap">
+          <Image
+            src={profile}
+            alt={`Portrait of ${site.name}`}
+            class="avatar"
+            width={360}
+            height={360}
+            loading="eager"
+          />
+        </div>
+        <h1>{site.name}</h1>
+        {
+          site.role && (
+            <p class="role">
+              {site.role}
+              {
+                site.org && (
+                  <a
+                    class="role-org role-org-link"
+                    href={site.orgUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {" "}
+                    · {site.org}
+                  </a>
+                )
+              }
+            </p>
+          )
+        }
+        {
+          site.location && (
+            <p class="location muted">
+              <span class="dot" aria-hidden="true"></span>{site.location}
+            </p>
+          )
+        }
+        <div class="rail-actions">
+          <a class="btn btn-accent" href="/about">About me</a>
+          <a class="btn" href="/research">View research</a>
+          <a
+            class="btn"
+            href={site.linkedin}
+            target="_blank"
+            rel="noopener noreferrer">Connect on LinkedIn</a
+          >
+        </div>
+      </div>
+      <div class="focus-card" aria-label="Interests">
+        <p class="rail-kicker">Interests</p>
+        <ul class="focus-list">
+          {interests.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Right: content feed -->
+    <div class="feed">
+      <!-- Now / currently building -->
+      <section class="now-block">
+        <div class="section-title">
+          <h2>{now.heading}</h2>
+        </div>
+        <div class="project-showcase">
+          <!-- decorative background logo -->
+          <Image
+            src={paperikaLogo}
+            alt=""
+            aria-hidden="true"
+            class="project-bg-logo"
+            width={320}
+            height={320}
+          />
+          <div class="project-top">
+            <span class="project-status">{now.project.status}</span>
+          </div>
+          <!-- brand lockup: logo + name -->
+          <div class="project-name-row">
+            <Image
+              src={paperikaLogo}
+              alt="paperika logo"
+              class="project-logo"
+              width={64}
+              height={64}
+            />
+            <p class="project-name">{now.project.name}</p>
+          </div>
+          <p class="project-tagline">{now.project.tagline}</p>
+          <p class="project-headline">{now.project.headline}</p>
+          <p class="project-desc">{now.project.description}</p>
+          {now.project.url && (
+            <a
+              class="btn btn-accent project-cta"
+              href={now.project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View project →
+            </a>
+          )}
+        </div>
+      </section>
+
+      <!-- Research preview -->
+      <section>
+        <div class="section-title">
+          <h2>Research</h2>
+        </div>
+        <div class="grid stack">
+          {
+            topResearch.map((item) =>
+              item.url ? (
+                <a class="card" href={item.url} target="_blank" rel="noopener noreferrer">
+                  <p class="card-meta">
+                    {item.venue} · {item.year}
+                  </p>
+                  <h3>{item.title}</h3>
+                  <p class="muted">{item.summary}</p>
+                  <span class="read-more">View paper →</span>
+                </a>
+              ) : (
+                <article class="card">
+                  <p class="card-meta">
+                    {item.venue} · {item.year}
+                  </p>
+                  <h3>{item.title}</h3>
+                  <p class="muted">{item.summary}</p>
+                </article>
+              )
+            )
+          }
+        </div>
+        <p style="margin-top: var(--space-4)">
+          <a href="/research">All research →</a>
+        </p>
+      </section>
+
+
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .home {
+    display: grid;
+    gap: var(--space-8);
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-12);
+  }
+
+  /* Left rail */
+  .profile-rail {
+    width: 100%;
+    max-width: 21rem;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  .id-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--surface) 94%, var(--accent-soft)),
+        var(--surface) 44%
+      );
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: var(--space-6);
+    box-shadow: 0 18px 50px rgba(82, 54, 38, 0.1);
+  }
+  .id-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      var(--accent),
+      color-mix(in srgb, var(--accent) 35%, transparent)
+    );
+  }
+  .avatar-wrap {
+    display: inline-block;
+    position: relative;
+  }
+  .avatar {
+    width: 142px;
+    height: 142px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--surface);
+    box-shadow:
+      0 0 0 1px var(--border),
+      0 14px 34px rgba(0, 0, 0, 0.16);
+  }
+  .avatar-wrap::before {
+    content: "";
+    position: absolute;
+    inset: -18px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at 50% 38%,
+      color-mix(in srgb, var(--accent) 20%, transparent),
+      transparent 70%
+    );
+    z-index: -1;
+    filter: blur(8px);
+  }
+  .id-card h1 {
+    font-size: 1.45rem;
+    margin: var(--space-4) 0 var(--space-2);
+  }
+  .role {
+    margin: 0;
+    font-size: 0.94rem;
+    line-height: 1.35;
+    font-weight: 650;
+    color: var(--accent-ink);
+  }
+  .role-org {
+    color: var(--accent-ink);
+    font-weight: 500;
+  }
+  .role-org-link {
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--accent-ink) 38%, transparent);
+    text-underline-offset: 3px;
+  }
+  .role-org-link:hover {
+    text-decoration-color: currentColor;
+  }
+  .location {
+    font-size: 0.92rem;
+    margin: var(--space-3) 0 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+  }
+  .location .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .rail-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    width: 100%;
+    margin-top: var(--space-6);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border);
+  }
+  .rail-actions .btn {
+    width: 100%;
+    justify-content: center;
+    padding-block: 0.72rem;
+    font-weight: 650;
+  }
+  .rail-actions .btn-accent {
+    box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 22%, transparent);
+  }
+  .focus-card {
+    background: color-mix(in srgb, var(--surface) 88%, var(--accent-soft));
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: var(--space-4);
+    box-shadow: 0 12px 34px rgba(82, 54, 38, 0.06);
+  }
+  .rail-kicker {
+    margin: 0 0 var(--space-3);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .focus-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.48rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .focus-list li {
+    padding: 0.24rem 0.62rem;
+    border-radius: 999px;
+    background: var(--surface);
+    border: 1px solid color-mix(in srgb, var(--accent) 14%, var(--border));
+    color: var(--accent-ink);
+    font-size: 0.74rem;
+    line-height: 1.35;
+  }
+
+  /* Right feed */
+  .feed {
+    min-width: 0;
+  }
+  .feed > section {
+    padding-block: var(--space-10);
+  }
+  .feed > section + section {
+    margin-top: 0;
+  }
+  .now-block {
+    background: color-mix(in srgb, var(--accent-soft) 42%, transparent);
+    border-radius: 18px;
+  }
+  .now-block .section-title {
+    margin-bottom: var(--space-4);
+  }
+  .project-showcase {
+    position: relative;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--border));
+    border-radius: 20px;
+    padding: var(--space-8);
+    box-shadow: 0 6px 28px rgba(82, 54, 38, 0.08);
+  }
+  /* Decorative ghost logo — top-right corner */
+  .project-bg-logo {
+    position: absolute;
+    top: -28px;
+    right: -28px;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    opacity: 0.07;
+    pointer-events: none;
+    user-select: none;
+    mix-blend-mode: multiply;
+  }
+  /* Brand lockup: small logo + wordmark */
+  .project-name-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-2);
+  }
+  .project-logo {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    flex-shrink: 0;
+    mix-blend-mode: multiply;
+  }
+  .project-top {
+    margin-bottom: var(--space-4);
+  }
+  .project-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+    padding: 0.22rem 0.65rem;
+    border-radius: 999px;
+  }
+  .project-status::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .project-name {
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--text);
+    margin: 0;
+  }
+  .project-tagline {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    font-weight: 600;
+    margin: 0 0 var(--space-6);
+  }
+  .project-headline {
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.45;
+    color: var(--text);
+    max-width: 38rem;
+    margin: 0 0 var(--space-4);
+  }
+  .project-desc {
+    font-size: 0.98rem;
+    color: var(--text-muted);
+    line-height: 1.68;
+    max-width: 44rem;
+    margin: 0;
+  }
+  .project-cta {
+    margin-top: var(--space-6);
+    display: inline-flex;
+  }
+  .now-featured {
+    margin-top: var(--space-6);
+    border-radius: 14px;
+    background: var(--surface);
+  }
+  .read-more {
+    display: inline-block;
+    margin-top: var(--space-3);
+    color: var(--accent-ink);
+    font-weight: 600;
+  }
+
+  /* Two-column from desktop up */
+  @media (min-width: 860px) {
+    .home {
+      grid-template-columns: minmax(0, 17.5rem) minmax(0, 1fr);
+      gap: clamp(var(--space-8), 5vw, var(--space-16));
+      align-items: start;
+      padding-top: var(--space-10);
+    }
+    .profile-rail {
+      position: sticky;
+      top: calc(60px + var(--space-6));
+      max-width: none;
+      margin-inline: 0;
+    }
+  }
+</style>

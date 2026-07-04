@@ -1,0 +1,269 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../config";
+---
+
+<BaseLayout
+  title="About"
+  description="About Aawaz Pokhrel — pharmaceutical scientist, partnership builder, and maker."
+  wide
+>
+  <header class="page-header">
+    <h1>About</h1>
+    <p>PhD scientist working in pharmaceutical imaging. Interested in business development, technology diligence, and partnerships. Building things on the side.</p>
+  </header>
+
+  <!-- Currently at DigiM -->
+  <section class="current-block">
+    <div class="current-inner">
+      <p class="block-kicker">Currently</p>
+      <h2>Lead Application Scientist at <a href="https://www.digimsolution.com/" target="_blank" rel="noopener noreferrer">DigiM</a></h2>
+      <p class="current-body">
+        DigiM is a pharmaceutical imaging CRO. We help drug companies understand what's actually happening inside their products at a microstructural level, using imaging and computational methods that most pharma teams don't have in-house. I was promoted to Lead Application Scientist in April 2026 after joining as Senior Application Scientist in 2024. I've worked across more than 100 pharma and biotech R&D programs, acting as the main scientific interface: gathering requirements from formulation and manufacturing teams, designing the analysis, and translating results into something people can actually make decisions with.
+      </p>
+      <p class="current-body">
+        What I'm most drawn to, beyond the technical work, is business development, technology diligence, and partnership management. I lead client relationship development at DigiM — finding where we can add real value, scoping new offerings, and growing accounts over time. I also evaluate new analytical approaches: not just whether they work technically, but whether they're meaningfully differentiated and whether the evidence behind them is actually strong. That lens has become a big part of how I think. I've recently started managing and mentoring junior scientists and project managers too, which I find genuinely rewarding.
+      </p>
+     
+    </div>
+  </section>
+
+  <!-- What I build -->
+  <section class="build-section">
+    <p class="section-kicker">What I build</p>
+    <p class="build-intro">
+      Outside of work I build things. Right now that means <strong>Paperika</strong> ; a tool that takes your name or scholarly profile, infers your research area, and gives you a ranked feed of papers published in your field in the past week, with a relatedness verdict and a one-line rationale for each. It's a problem I ran into myself: I wanted to stay current without spending an hour every week sorting through everything that wasn't relevant.
+    </p>
+    <div class="build-card">
+      <div class="build-card-inner">
+        <p class="build-label">In development</p>
+        <p class="build-name">Paperika</p>
+        <p class="build-line">Hot papers in your field. A radar for papers that matter to your work.</p>
+        <a href="/" class="build-link">See what I'm building →</a>
+      </div>
+    </div>
+    
+  </section>
+
+  <!-- Background -->
+  <section class="bio-section">
+    <p class="section-kicker">Background</p>
+    <p class="bio-body">
+      I did my PhD in Physics at Georgia Tech, studying how bacterial colonies grow. The work involved a lot of microscopy, image analysis, and building models and it led to a first-author paper in <em>Nature Physics</em>. More than the result, what I took from that experience was a habit of asking whether the evidence actually supports what you're claiming. That's shaped how I think about everything since.
+    </p>
+    <p class="bio-body nepal-block">
+      Before grad school, I ran a project through the <a href="https://nepalieducationforpeace.home.blog/" target="_blank" rel="noopener noreferrer">Davis Project for Peace</a> — a $10,000 grant I wrote and managed to establish a library in two rural schools in Nepal. It was my first real experience leading something from an idea to something that existed in the world. I'm from Nepal originally, so this one was personal.
+    </p>
+    <div class="edu-list">
+      <div class="edu-item">
+        <span class="edu-year">2024</span>
+        <span class="edu-text">PhD, Physics · Georgia Institute of Technology</span>
+      </div>
+      <div class="edu-item">
+        <span class="edu-year">2020</span>
+        <span class="edu-text">MS, Physics · Georgia Institute of Technology</span>
+      </div>
+      <div class="edu-item">
+        <span class="edu-year">2019</span>
+        <span class="edu-text">BS, Physics & Computer Science · Gettysburg College</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Looking ahead -->
+  <section class="ahead-section">
+    <p class="section-kicker">Where I'm headed</p>
+    <p class="bio-body">
+      I'm interested in moving toward life-sciences investing or business development not because it sounds good, but because the questions I find most interesting (does the evidence hold up? is this meaningfully differentiated? what would have to be true for this to work?) are exactly the questions that matter in early-stage technology evaluation. The combination of pharma experience, scientific depth, and genuine curiosity about business is something I want to put to work.
+    </p>
+    <a
+      href={site.linkedin}
+      class="btn btn-accent"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Connect on LinkedIn →
+    </a>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding: var(--space-12) 0 var(--space-8);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: var(--space-10);
+  }
+  .page-header h1 {
+    font-size: clamp(2rem, 5vw, 2.6rem);
+    margin-bottom: var(--space-2);
+  }
+  .page-header p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    max-width: 52rem;
+  }
+
+  .block-kicker,
+  .section-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    font-weight: 600;
+    margin: 0 0 var(--space-3);
+  }
+
+  /* Currently block */
+  .current-block {
+    background: color-mix(in srgb, var(--accent-soft) 48%, transparent);
+    border-radius: 20px;
+    padding: var(--space-8);
+    margin-bottom: var(--space-12);
+  }
+  .current-inner h2 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    margin: 0 0 var(--space-4);
+  }
+  .current-inner h2 a {
+    color: var(--accent-ink);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+    text-underline-offset: 3px;
+  }
+  .current-inner h2 a:hover {
+    color: var(--accent);
+  }
+  .current-body {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text);
+    max-width: 54rem;
+    margin: 0 0 var(--space-4);
+  }
+  .current-body:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Build section */
+  .build-section {
+    margin-bottom: var(--space-12);
+  }
+  .build-intro {
+    font-size: 1rem;
+    line-height: 1.75;
+    max-width: 52rem;
+    margin: 0 0 var(--space-6);
+  }
+  .build-card {
+    margin-bottom: var(--space-6);
+  }
+  .build-card-inner {
+    display: inline-block;
+    background: var(--surface);
+    border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
+    border-radius: 16px;
+    padding: var(--space-6) var(--space-8);
+    box-shadow: 0 4px 18px rgba(82, 54, 38, 0.08);
+    max-width: 32rem;
+  }
+  .build-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+    display: inline-block;
+    padding: 0.18rem 0.55rem;
+    border-radius: 999px;
+    margin: 0 0 var(--space-2);
+  }
+  .build-name {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin: 0 0 var(--space-2);
+  }
+  .build-line {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin: 0 0 var(--space-4);
+  }
+  .build-link {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--accent-ink);
+    text-decoration: none;
+  }
+  .build-link:hover {
+    text-decoration: underline;
+  }
+  .build-why {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.68;
+    max-width: 52rem;
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* Background */
+  .bio-section {
+    margin-bottom: var(--space-12);
+  }
+  .bio-body {
+    font-size: 1rem;
+    line-height: 1.75;
+    max-width: 52rem;
+    margin: 0 0 var(--space-4);
+  }
+  .nepal-block {
+    border-left: 3px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+    padding-left: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+  .nepal-block a {
+    color: var(--accent-ink);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .edu-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    border-left: 2px solid color-mix(in srgb, var(--accent) 22%, var(--border));
+    padding-left: var(--space-4);
+    margin-top: var(--space-6);
+  }
+  .edu-item {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-4);
+  }
+  .edu-year {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent-ink);
+    font-weight: 600;
+    min-width: 2.8rem;
+    flex-shrink: 0;
+  }
+  .edu-text {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  /* Looking ahead */
+  .ahead-section {
+    margin-bottom: var(--space-16);
+  }
+  .ahead-section .bio-body {
+    margin-bottom: var(--space-6);
+  }
+</style>
