@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { site } from "../config";
 ---
 
 <BaseLayout
@@ -10,7 +9,7 @@ import { site } from "../config";
 >
   <header class="page-header">
     <h1>About</h1>
-    <p>PhD scientist working in pharmaceutical imaging. Interested in business development, technology diligence, and partnerships. Building things on the side.</p>
+    <p>PhD scientist working at the intersection of pharmaceutical science, business development, and technology strategy. I'm especially interested in building scientific partnerships, identifying where new technologies can create meaningful value, and turning complex technical work into clear business and R&amp;D decisions.</p>
   </header>
 
   <!-- Currently at DigiM -->
@@ -19,12 +18,14 @@ import { site } from "../config";
       <p class="block-kicker">Currently</p>
       <h2>Lead Application Scientist at <a href="https://www.digimsolution.com/" target="_blank" rel="noopener noreferrer">DigiM</a></h2>
       <p class="current-body">
-        DigiM is a pharmaceutical imaging CRO. We help drug companies understand what's actually happening inside their products at a microstructural level, using imaging and computational methods that most pharma teams don't have in-house. I was promoted to Lead Application Scientist in April 2026 after joining as Senior Application Scientist in 2024. I've worked across more than 100 pharma and biotech R&D programs, acting as the main scientific interface: gathering requirements from formulation and manufacturing teams, designing the analysis, and translating results into something people can actually make decisions with.
+        At DigiM, I lead client-facing pharmaceutical R&amp;D programs that use advanced imaging, microstructure analysis, and AI/ML to help formulation and development teams better understand their products.
       </p>
       <p class="current-body">
-        What I'm most drawn to, beyond the technical work, is business development, technology diligence, and partnership management. I lead client relationship development at DigiM — finding where we can add real value, scoping new offerings, and growing accounts over time. I also evaluate new analytical approaches: not just whether they work technically, but whether they're meaningfully differentiated and whether the evidence behind them is actually strong. That lens has become a big part of how I think. I've recently started managing and mentoring junior scientists and project managers too, which I find genuinely rewarding.
+        Since joining the company, I have managed more than 200 scientific projects, including work with major pharmaceutical companies and FDA stakeholders. My role spans both science and business: I define project scopes, translate technical findings into practical decisions, manage strategic client relationships, identify follow-on opportunities, and help develop new analytical offerings.
       </p>
-     
+      <p class="current-body">
+        I also work closely with company leadership on account growth and scientific strategy, while managing and mentoring junior scientists.
+      </p>
     </div>
   </section>
 
@@ -68,22 +69,6 @@ import { site } from "../config";
         <span class="edu-text">BS, Physics & Computer Science · Gettysburg College</span>
       </div>
     </div>
-  </section>
-
-  <!-- Looking ahead -->
-  <section class="ahead-section">
-    <p class="section-kicker">Where I'm headed</p>
-    <p class="bio-body">
-      I'm interested in moving toward life-sciences investing or business development not because it sounds good, but because the questions I find most interesting (does the evidence hold up? is this meaningfully differentiated? what would have to be true for this to work?) are exactly the questions that matter in early-stage technology evaluation. The combination of pharma experience, scientific depth, and genuine curiosity about business is something I want to put to work.
-    </p>
-    <a
-      href={site.linkedin}
-      class="btn btn-accent"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Connect on LinkedIn →
-    </a>
   </section>
 
 </BaseLayout>
@@ -259,11 +244,4 @@ import { site } from "../config";
     color: var(--text-muted);
   }
 
-  /* Looking ahead */
-  .ahead-section {
-    margin-bottom: var(--space-16);
-  }
-  .ahead-section .bio-body {
-    margin-bottom: var(--space-6);
-  }
 </style>
