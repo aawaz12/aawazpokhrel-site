@@ -28,9 +28,9 @@ export const now = {
     tagline: "Hot relevant papers in your field",
     headline: "A radar for papers that matter to your work.",
     description:
-      "Enter your name or scholarly profile. Paperika infers your research field and delivers a ranked feed of papers published in your area in past 7 days; with a relatedness verdict and one-line rationale for each.",
-    status: "In development",
-    url: "",
+      "Enter your name or scholarly profile. Paperika infers your research field and delivers a ranked feed of papers published in your area in the last 15 days, with a relatedness verdict and one-line rationale for each.",
+    status: "Live",
+    url: "https://paperika.aawazpokhrel.com",
   },
 };
 
