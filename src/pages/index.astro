@@ -78,7 +78,13 @@ const topResearch = research.slice(0, 2);
         <div class="section-title">
           <h2>{now.heading}</h2>
         </div>
-        <div class="project-showcase">
+        <a
+          class="project-showcase"
+          href={now.project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${now.project.name} — open project (opens in new tab)`}
+        >
           <!-- decorative background logo -->
           <Image
             src={paperikaLogo}
@@ -105,17 +111,7 @@ const topResearch = research.slice(0, 2);
           <p class="project-tagline">{now.project.tagline}</p>
           <p class="project-headline">{now.project.headline}</p>
           <p class="project-desc">{now.project.description}</p>
-          {now.project.url && (
-            <a
-              class="btn btn-accent project-cta"
-              href={now.project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View project →
-            </a>
-          )}
-        </div>
+        </a>
       </section>
 
       <!-- Research preview -->
@@ -335,13 +331,31 @@ const topResearch = research.slice(0, 2);
     margin-bottom: var(--space-4);
   }
   .project-showcase {
+    display: block;
     position: relative;
     overflow: hidden;
+    color: inherit;
+    text-decoration: none;
     background: var(--surface);
     border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--border));
     border-radius: 20px;
     padding: var(--space-8);
     box-shadow: 0 6px 28px rgba(82, 54, 38, 0.08);
+    transition:
+      border-color var(--transition),
+      transform var(--transition),
+      box-shadow var(--transition);
+  }
+  .project-showcase:hover,
+  .project-showcase:focus-visible {
+    text-decoration: none;
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 34px rgba(82, 54, 38, 0.14);
+  }
+  .project-showcase:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
   }
   /* Decorative ghost logo — top-right corner */
   .project-bg-logo {
@@ -430,10 +444,6 @@ const topResearch = research.slice(0, 2);
     line-height: 1.68;
     max-width: 44rem;
     margin: 0;
-  }
-  .project-cta {
-    margin-top: var(--space-6);
-    display: inline-flex;
   }
   .now-featured {
     margin-top: var(--space-6);
