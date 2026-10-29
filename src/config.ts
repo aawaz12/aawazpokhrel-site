@@ -2,15 +2,15 @@
 export const site = {
   name: "Aawaz Pokhrel",
   title: "Aawaz Pokhrel, PhD",
-  tagline: "PhD Scientist · Pharmaceutical Technology Evaluation & AI-Enabled R&D",
+  tagline: "Pharma R&D Partnerships · Program Leadership · Imaging & AI",
   role: "Lead Application Scientist",
   org: "DigiM",
   orgUrl: "https://www.digimsolution.com/",
-  // Short, punchy bio used in the home hero (keep it to ~2 sentences).
+  // Short line shown under the name and role on the home page.
   shortBio:
-    "Pharmaceutical Technology Evaluation | Scientific & Technical Diligence.",
-  // Longer bio for an about page or future use.
-  bio: "I'm a PhD scientist who evaluates emerging technologies for pharmaceutical development — using advanced imaging, microstructure analysis, and computational modeling to understand what drives drug-product performance and to guide better formulation decisions. I'm currently Lead Application Scientist at DigiM, a pharmaceutical imaging CRO, where I also lead external partnerships, including a collaboration with the FDA applying generative AI to pharmaceutical imaging. My PhD in Physics at Georgia Tech studied how bacterial colonies grow — work that led to a first-author paper in Nature Physics — and I'm increasingly focused on life-sciences investing and venture creation.",
+    "I work where pharma R&D meets the business: scientific partnerships, R&D program leadership, and imaging and AI for drug development.",
+  // Used as the home page's meta description (what Google shows). Keep it ~155 characters.
+  bio: "PhD scientist leading pharma R&D partnerships and programs at DigiM Solutions. Drug delivery, peptides and biologics, imaging and AI.",
   location: "Greater Boston",
   email: "3135aawaz@gmail.com",
   linkedin: "https://www.linkedin.com/in/aawazpokhrel",
@@ -28,7 +28,7 @@ export const now = {
     tagline: "Hot relevant papers in your field",
     headline: "A radar for papers that matter to your work.",
     description:
-      "Enter your name or scholarly profile. Paperika infers your research field and delivers a ranked feed of papers published in your area in the last 15 days, with a relatedness verdict and one-line rationale for each.",
+      "Enter your name or scholarly profile. Paperika infers your research field and builds a ranked feed of newly published papers in your area, with a relatedness verdict and a one-line rationale for each.",
     status: "Live",
     url: "https://paperika.aawazpokhrel.com",
   },
@@ -43,7 +43,7 @@ export const nav = [
 // Short headline highlights shown under the photo on the home page.
 export const highlights = [
   "Lead Application Scientist @ DigiM",
+  "Key investigator, ~$5M FDA research contract",
+  "First author, Nature Physics & AAPS PharmSciTech",
   "PhD in Physics · Georgia Tech",
-  "First-author, Nature Physics",
-  "FDA × Generative AI collaboration",
 ];
