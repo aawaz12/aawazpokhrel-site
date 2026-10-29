@@ -2,11 +2,11 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
 import { site, now } from "../config";
-import { interests, research } from "../data";
+import { focusAreas, research } from "../data";
 import profile from "../assets/profile.jpg";
 import paperikaLogo from "../assets/paperika-logo.png";
 
-const topResearch = research.slice(0, 2);
+const topResearch = research.filter((r) => r.featured).slice(0, 2);
 ---
 
 <BaseLayout wide>
@@ -52,6 +52,7 @@ const topResearch = research.slice(0, 2);
             </p>
           )
         }
+        {site.shortBio && <p class="short-bio">{site.shortBio}</p>}
         <div class="rail-actions">
           <a class="btn btn-accent" href="/about">About me</a>
           <a class="btn" href="/research">View research</a>
@@ -63,10 +64,10 @@ const topResearch = research.slice(0, 2);
           >
         </div>
       </div>
-      <div class="focus-card" aria-label="Interests">
-        <p class="rail-kicker">Interests</p>
+      <div class="focus-card" aria-label="Focus areas">
+        <p class="rail-kicker">Focus areas</p>
         <ul class="focus-list">
-          {interests.map((item) => <li>{item}</li>)}
+          {focusAreas.map((item) => <li>{item}</li>)}
         </ul>
       </div>
     </aside>
@@ -261,6 +262,12 @@ const topResearch = research.slice(0, 2);
     height: 7px;
     border-radius: 50%;
     background: var(--accent);
+  }
+  .short-bio {
+    margin: var(--space-4) 0 0;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--text-muted);
   }
   .rail-actions {
     display: flex;

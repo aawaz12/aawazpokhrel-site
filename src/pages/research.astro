@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { research } from "../data";
+import { research, posters } from "../data";
 ---
 
 <BaseLayout
@@ -10,7 +10,7 @@ import { research } from "../data";
 >
   <header class="page-header">
     <h1>Research</h1>
-    <p>Publications, preprints, and scientific projects — biophysics, pharmaceutical imaging, and AI.</p>
+    <p>Publications, preprints, and conference posters in pharmaceutical imaging, AI, and biophysics.</p>
   </header>
   <section>
     <div class="grid stack">
@@ -44,6 +44,21 @@ import { research } from "../data";
       }
     </div>
   </section>
+  <section class="posters">
+    <h2>Conference posters</h2>
+    <div class="grid stack">
+      {
+        posters.map((p) => (
+          <article class="card">
+            <p class="card-meta">{p.event}</p>
+            <h3>{p.title}</h3>
+            <p class="card-meta">{p.role}</p>
+            <p class="muted">{p.summary}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
@@ -63,5 +78,12 @@ import { research } from "../data";
   section {
     border-top: none;
     padding-top: 0;
+  }
+  .posters {
+    margin-top: var(--space-12);
+  }
+  .posters h2 {
+    font-size: 1.4rem;
+    margin-bottom: var(--space-4);
   }
 </style>
